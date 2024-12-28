@@ -11,9 +11,6 @@ Pokedex Lite is a lightweight and responsive web application built with Next.js.
 2. [Technologies Used](#technologies-used)  
 3. [Installation and Setup](#installation-and-setup)  
 4. [Challenges and Solutions](#challenges-and-solutions)  
-5. [Contributing](#contributing)  
-6. [License](#license)  
-
 ---
 
 ## Features
@@ -52,31 +49,31 @@ Follow these steps to set up the project on your local machine:
 2. **Install Dependencies**:
 Ensure you have Node.js installed. Then run:
 
-```bash
-npm install
-```
+    ```bash
+    npm install
+    ```
 
 3. **Run the Application**:
 Start the development server with:
 
-```bash
-npm run dev
-```
+    ```bash
+    npm run dev
+    ```
 
 4. **View the App**:
 Open your browser and navigate to:
 
     ```bash
-http://localhost:3000
-```
+    http://localhost:3000
+    ```
 
 5. **Build for Production (Optional)**:
 To create a production-ready build:
 
-```bash
-npm run build
-npm start
-```
+    ```bash
+    npm run build
+    npm start
+    ```
 
 ---
 
