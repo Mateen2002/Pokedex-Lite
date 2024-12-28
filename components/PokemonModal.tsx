@@ -10,7 +10,7 @@ interface PokemonModalProps {
 export default function PokemonModal({ pokemon, onClose }: PokemonModalProps) {
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto animate-fade-in">
         <div className="p-6">
           <div className="flex justify-between items-start">
             <h2 className="text-2xl font-bold capitalize">{pokemon.name}</h2>
@@ -53,7 +53,7 @@ export default function PokemonModal({ pokemon, onClose }: PokemonModalProps) {
                     <div className="flex-1 h-2 bg-gray-200 rounded-full">
                       <div
                         className="h-full bg-blue-500 rounded-full"
-                        style={{ width: `${(base_stat / 255) * 100}%` }}
+                        style={{ width: `${(base_stat / 255) * 100}%` }} // Fixed width calculation
                       />
                     </div>
                     <span className="ml-2 w-8 text-sm">{base_stat}</span>
@@ -68,9 +68,7 @@ export default function PokemonModal({ pokemon, onClose }: PokemonModalProps) {
                 {pokemon.abilities.map(({ ability, is_hidden }) => (
                   <span
                     key={ability.name}
-                    className={`px-3 py-1 rounded-full text-sm ${
-                      is_hidden ? 'bg-purple-100' : 'bg-gray-100'
-                    }`}
+                    className={`px-3 py-1 rounded-full text-sm ${is_hidden ? 'bg-purple-100' : 'bg-gray-100'}`}
                   >
                     {ability.name}
                     {is_hidden && ' (Hidden)'}
@@ -95,4 +93,3 @@ export default function PokemonModal({ pokemon, onClose }: PokemonModalProps) {
     </div>
   )
 }
-

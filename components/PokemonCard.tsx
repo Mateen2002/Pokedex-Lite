@@ -39,7 +39,7 @@ export default function PokemonCard({ pokemon, onFavoriteChange }: PokemonCardPr
   return (
     <>
       <div 
-        className="bg-white rounded-lg shadow-lg p-4 cursor-pointer hover:shadow-xl transition-shadow"
+        className="bg-white rounded-lg shadow-lg p-4 cursor-pointer hover:shadow-xl transform hover:scale-105 transition-all duration-300"
         onClick={() => setIsModalOpen(true)}
       >
         <div className="relative">
@@ -52,7 +52,7 @@ export default function PokemonCard({ pokemon, onFavoriteChange }: PokemonCardPr
           />
           <button
             onClick={toggleFavorite}
-            className="absolute top-2 right-2 p-2 rounded-full bg-white/80 hover:bg-white"
+            className="absolute top-2 right-2 p-2 rounded-full bg-white/80 hover:bg-white transition-colors duration-200"
           >
             <Heart
               className={`h-6 w-6 ${isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-400'}`}
@@ -65,7 +65,7 @@ export default function PokemonCard({ pokemon, onFavoriteChange }: PokemonCardPr
             {pokemon.types.map(({ type }) => (
               <span
                 key={type.name}
-                className="px-2 py-1 rounded-full text-sm bg-gray-100"
+                className="px-2 py-1 rounded-full text-sm bg-gray-100 hover:bg-gray-200 transition-colors"
               >
                 {type.name}
               </span>
@@ -79,4 +79,3 @@ export default function PokemonCard({ pokemon, onFavoriteChange }: PokemonCardPr
     </>
   )
 }
-

@@ -6,6 +6,7 @@ import SearchBar from '@/components/SearchBar'
 import TypeFilter from '@/components/TypeFilter'
 import FavoritesList from '@/components/FavoritesList'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import LoginButton from '@/components/LoginButton'
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -15,8 +16,11 @@ export default function Home() {
 
   return (
     <main className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8 text-center">Pokedex Lite</h1>
-      
+       <div className="flex justify-between items-center mb-8">
+        <h1 className="text-4xl font-bold">Pokedex Lite</h1>
+          <LoginButton />
+        </div>
+        
       <Tabs defaultValue="all" className="mb-8">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="all" onClick={() => setShowFavorites(false)}>
