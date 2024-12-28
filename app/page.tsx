@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import PokemonList from '@/components/PokemonList'
 import SearchBar from '@/components/SearchBar'
 import TypeFilter from '@/components/TypeFilter'

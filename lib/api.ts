@@ -26,7 +26,7 @@ export async function getPokemonByType(type: string): Promise<Pokemon[]> {
   const data = await response.json()
   
   const pokemonPromises = data.pokemon
-    .slice(0, 20) // Limit to 20 Pokemon per type to avoid too many requests
+    .slice(0, 20)
     .map((p: { pokemon: { url: string } }) => 
       fetch(p.pokemon.url).then(res => res.json())
     )
