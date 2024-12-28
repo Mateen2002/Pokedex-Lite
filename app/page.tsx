@@ -27,6 +27,7 @@ export default function Home() {
           </TabsTrigger>
         </TabsList>
         
+        {/* Show "All Pokemon" tab content */}
         <TabsContent value="all">
           <div className="space-y-4">
             <SearchBar onSearch={setSearchQuery} />
@@ -40,6 +41,7 @@ export default function Home() {
           </div>
         </TabsContent>
         
+        {/* Show "Favorites" tab content */}
         <TabsContent value="favorites">
           <FavoritesList searchQuery={searchQuery} />
         </TabsContent>
@@ -47,4 +49,3 @@ export default function Home() {
     </main>
   )
 }
-
