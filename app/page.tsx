@@ -27,23 +27,23 @@ export default function Home() {
           </TabsTrigger>
         </TabsList>
         
-        {/* Show "All Pokemon" tab content */}
         <TabsContent value="all">
           <div className="space-y-4">
             <SearchBar onSearch={setSearchQuery} />
             <TypeFilter onTypeSelect={setSelectedType} />
-            <PokemonList 
-              searchQuery={searchQuery}
-              selectedType={selectedType}
-              page={currentPage}
-              onPageChange={setCurrentPage}
-            />
+            {!showFavorites && (
+              <PokemonList 
+                searchQuery={searchQuery}
+                selectedType={selectedType}
+                page={currentPage}
+                onPageChange={setCurrentPage}
+              />
+            )}
           </div>
         </TabsContent>
         
-        {/* Show "Favorites" tab content */}
         <TabsContent value="favorites">
-          <FavoritesList searchQuery={searchQuery} />
+          {showFavorites && <FavoritesList searchQuery={searchQuery} />}
         </TabsContent>
       </Tabs>
     </main>
