@@ -1,10 +1,10 @@
-import { Pokemon } from '@/lib/types'
-import Image from 'next/image'
-import { X } from 'lucide-react'
+import { Pokemon } from "@/lib/types";
+import Image from "next/image";
+import { X } from "lucide-react";
 
 interface PokemonModalProps {
-  pokemon: Pokemon
-  onClose: () => void
+  pokemon: Pokemon;
+  onClose: () => void;
 }
 
 export default function PokemonModal({ pokemon, onClose }: PokemonModalProps) {
@@ -18,10 +18,13 @@ export default function PokemonModal({ pokemon, onClose }: PokemonModalProps) {
               <X className="h-6 w-6" />
             </button>
           </div>
-          
+
           <div className="mt-4">
             <Image
-              src={pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default}
+              src={
+                pokemon.sprites.other["official-artwork"].front_default ||
+                pokemon.sprites.front_default
+              }
               alt={pokemon.name}
               width={300}
               height={300}
@@ -68,10 +71,12 @@ export default function PokemonModal({ pokemon, onClose }: PokemonModalProps) {
                 {pokemon.abilities.map(({ ability, is_hidden }) => (
                   <span
                     key={ability.name}
-                    className={`px-3 py-1 rounded-full text-sm ${is_hidden ? 'bg-purple-100' : 'bg-gray-100'}`}
+                    className={`px-3 py-1 rounded-full text-sm ${
+                      is_hidden ? "bg-purple-100" : "bg-gray-100"
+                    }`}
                   >
                     {ability.name}
-                    {is_hidden && ' (Hidden)'}
+                    {is_hidden && " (Hidden)"}
                   </span>
                 ))}
               </div>
@@ -91,5 +96,5 @@ export default function PokemonModal({ pokemon, onClose }: PokemonModalProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }
