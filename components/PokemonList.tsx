@@ -1,68 +1,68 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react'
-import { Pokemon } from '@/lib/types'
-import { getPokemonList, getPokemonByType } from '@/lib/api'
-import PokemonCard from './PokemonCard'
-import Loading from './Loading'
-import { Button } from '@/components/ui/button'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { useEffect, useState } from "react";
+import { Pokemon } from "@/lib/types";
+import { getPokemonList, getPokemonByType } from "@/lib/api";
+import PokemonCard from "./PokemonCard";
+import Loading from "./Loading";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface PokemonListProps {
-  searchQuery: string
-  selectedType: string
-  page: number
-  onPageChange: (page: number) => void
+  searchQuery: string;
+  selectedType: string;
+  page: number;
+  onPageChange: (page: number) => void;
 }
 
-export default function PokemonList({ 
-  searchQuery, 
-  selectedType, 
-  page, 
-  onPageChange 
+export default function PokemonList({
+  searchQuery,
+  selectedType,
+  page,
+  onPageChange,
 }: PokemonListProps) {
-  const [pokemon, setPokemon] = useState<Pokemon[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-  const [totalPages, setTotalPages] = useState(1)
+  const [pokemon, setPokemon] = useState<Pokemon[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     async function fetchPokemon() {
       try {
-        setLoading(true)
-        setError(null)
+        setLoading(true);
+        setError(null);
 
         if (selectedType) {
-          const typeResults = await getPokemonByType(selectedType)
-          setPokemon(typeResults)
-          setTotalPages(Math.ceil(typeResults.length / 20))
+          const typeResults = await getPokemonByType(selectedType);
+          setPokemon(typeResults);
+          setTotalPages(Math.ceil(typeResults.length / 20));
         } else {
-          const results = await getPokemonList(page)
+          const results = await getPokemonList(page);
           const pokemonDetails = await Promise.all(
-            results.results.map(p => fetch(p.url).then(res => res.json()))
-          )
-          setPokemon(pokemonDetails)
-          setTotalPages(Math.ceil(results.count / 20))
+            results.results.map((p) => fetch(p.url).then((res) => res.json()))
+          );
+          setPokemon(pokemonDetails);
+          setTotalPages(Math.ceil(results.count / 20));
         }
       } catch (err) {
-        setError('Failed to fetch Pokemon')
-        console.error(err)
+        setError("Failed to fetch Pokemon");
+        console.error(err);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     }
 
-    fetchPokemon()
-  }, [selectedType, page])
+    fetchPokemon();
+  }, [selectedType, page]);
 
-  if (loading) return <Loading />
-  if (error) return <div className="text-red-500 text-center">{error}</div>
+  if (loading) return <Loading />;
+  if (error) return <div className="text-red-500 text-center">{error}</div>;
 
   const filteredPokemon = searchQuery
-    ? pokemon.filter(p => 
+    ? pokemon.filter((p) =>
         p.name.toLowerCase().includes(searchQuery.toLowerCase())
       )
-    : pokemon
+    : pokemon;
 
   return (
     <div className="space-y-6">
@@ -94,6 +94,5 @@ export default function PokemonList({
         </Button>
       </div>
     </div>
-  )
+  );
 }
-

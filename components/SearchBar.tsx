@@ -1,22 +1,22 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import { Search } from 'lucide-react'
+import { useState, useEffect } from "react";
+import { Search } from "lucide-react";
 
 interface SearchBarProps {
-  onSearch: (query: string) => void
+  onSearch: (query: string) => void;
 }
 
 export default function SearchBar({ onSearch }: SearchBarProps) {
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     const debounceTimer = setTimeout(() => {
-      onSearch(query)
-    }, 300)
+      onSearch(query);
+    }, 300);
 
-    return () => clearTimeout(debounceTimer)
-  }, [query, onSearch])
+    return () => clearTimeout(debounceTimer);
+  }, [query, onSearch]);
 
   return (
     <div className="relative">
@@ -29,6 +29,5 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
       />
       <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
     </div>
-  )
+  );
 }
-

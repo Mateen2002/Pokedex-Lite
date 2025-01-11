@@ -83,15 +83,16 @@ export default function PokemonModal({ pokemon, onClose }: PokemonModalProps) {
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              {/*<div>*/}
-              {/*  <h3 className="font-semibold mb-1">Height</h3>*/}
-              {/*  <p>{pokemon.height / 10}m</p>*/}
-              {/*</div>*/}
-              {/*<div>*/}
-              {/*  <h3 className="font-semibold mb-1">Weight</h3>*/}
-              {/*  <p>{pokemon.weight / 10}kg</p>*/}
-              {/*</div>*/}
+              <div>
+                <h3 className="font-semibold mb-1">Height</h3>
+                <p>{pokemon.height / 10}m</p>
+              </div>
+              <div>
+                <h3 className="font-semibold mb-1">Weight</h3>
+                <p>{pokemon.weight / 10}kg</p>
+              </div>
             </div>
+            
           </div>
         </div>
       </div>
